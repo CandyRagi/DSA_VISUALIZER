@@ -12,33 +12,30 @@ class Tree
 
         Tree(int*a,int size)
         {
-            this->a=a;
+            this->a=a;               
             this->size=size;
         }
 
-        int* getNodeChildren(int node_index)
-        {   
-            static int children[2];
-            children[0]=-1;
-            children[1]=-1;
-
-            if(2*node_index+1>this->size)
-            {
-                return children;                
-            }
-
-            if(2*node_index+2>size)
-            {   
-                children[0]=this->a[2*node_index+1];
-                return children;                
-            }
-
-
-            children[1]=this->a[2*node_index+2];
-
-            return children;
-
+    int* getNodeChildren(int node_index)
+    {   
+        int *children = new int[2]; 
+        children[0] = -1;
+        children[1] = -1;
+    
+        if(2*node_index+1 >= this->size)  
+        {
+            return children;                
         }
+    
+        children[0] = this->a[2*node_index+1];
+    
+        if(2*node_index+2 < size)  
+        {   
+            children[1] = this->a[2*node_index+2];
+        }
+    
+        return children;
+    }
 
         void printTree()
         {   
